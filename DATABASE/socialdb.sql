@@ -1,52 +1,57 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
--- http://www.phpmyadmin.net
+-- version 5.0.1
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 16, 2019 at 05:49 PM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 13-03-2020 a las 02:16:06
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `socialdb`
+-- Base de datos: `socialdb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `friends`
+-- Estructura de tabla para la tabla `friends`
 --
 
-CREATE TABLE IF NOT EXISTS `friends` (
-`my_friend_id` int(11) NOT NULL,
+CREATE TABLE `friends` (
+  `my_friend_id` int(11) NOT NULL,
   `my_id` int(11) NOT NULL,
   `friends_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `friends`
+-- Volcado de datos para la tabla `friends`
 --
 
 INSERT INTO `friends` (`my_friend_id`, `my_id`, `friends_id`) VALUES
-(1, 10, 0);
+(1, 10, 0),
+(11, 12, 0),
+(12, 13, 0),
+(13, 11, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `members`
+-- Estructura de tabla para la tabla `members`
 --
 
-CREATE TABLE IF NOT EXISTS `members` (
-`member_id` int(11) NOT NULL,
+CREATE TABLE `members` (
+  `member_id` int(11) NOT NULL,
   `firstname` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
   `middlename` varchar(100) NOT NULL,
@@ -63,54 +68,58 @@ CREATE TABLE IF NOT EXISTS `members` (
   `status` varchar(100) NOT NULL,
   `work` varchar(100) NOT NULL,
   `religion` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `members`
+-- Volcado de datos para la tabla `members`
 --
 
 INSERT INTO `members` (`member_id`, `firstname`, `lastname`, `middlename`, `address`, `email`, `contact_no`, `age`, `gender`, `username`, `password`, `image`, `birthdate`, `mobile`, `status`, `work`, `religion`) VALUES
-(1, 'stephanie', 'villanueva', 'batoonq', 'Saraviaq', 'tephvillanueva.jk@gmail.comq', '0946651154', 18, 'Male', 'teph', 'teph', 'images/male5.jpg', 'q', 'q', 'q', 'q', 'q'),
-(7, 'john kevin', 'lorayna', '', 'bago city', 'jkevlorayna@gmail.com', '09466651154', 19, 'Male', 'q', 'q', '', '', '', '', '', ''),
-(8, 'testg', 'fasfsg', '', 'bagdahsd', 'kevin_lorayna@yahoo.com', '31289417', 12, 'Female', 'test', 'qwerty', '', '', '', '', '', ''),
-(9, 'jessica', 'bela-ong', '', 'bbasf', 'kasfasfas@yahoo.com', '311fasf', 19, 'Female', 'jessica', '12345', '', '', '', '', '', ''),
-(10, 'Harry', 'Den', '', 'espn', '', '', 0, 'Male', 'harry', 'pass', 'images/male6.jpg', '12 Jan-1995', '7542220011', 'Single', 'developer', 'Buddhist');
+(11, 'Mauricio', 'Sevilla', '', 'Calle 45 #16-23', '', '', 0, 'Hombre', 'configuroweb', '1234abcd..', 'images/logo2.png', '1992-05-02', '3142450392', 'Activo', 'Técnico IT', 'No declarada'),
+(12, 'usuario', 'usuario', '', 'Calle con Carrera', '', '', 0, 'Hombre', 'usuario', '1234abcd..', 'images/avatar.jpg', '1989-07-12', '3054679844', 'Activo', 'Técnico IT', 'No declarada'),
+(13, 'Juan', 'Lee', '', 'Cualquier Calle', '', '', 0, 'Hombre', 'lee', '1234abcd..', 'images/avatar.jpg', '25-12-1997', '3167894167', 'Casado', 'Work IT', 'No declara');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `message`
+-- Estructura de tabla para la tabla `message`
 --
 
-CREATE TABLE IF NOT EXISTS `message` (
-`message_id` int(11) NOT NULL,
+CREATE TABLE `message` (
+  `message_id` int(11) NOT NULL,
   `sender_id` int(11) NOT NULL,
   `reciever_id` int(11) NOT NULL,
   `content` varchar(100) NOT NULL,
   `date_sended` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `message`
+-- Volcado de datos para la tabla `message`
 --
 
 INSERT INTO `message` (`message_id`, `sender_id`, `reciever_id`, `content`, `date_sended`) VALUES
-(1, 10, 1, 'hello', '2019-02-27 18:12:48');
+(1, 10, 1, 'hello', '2019-02-27 18:12:48'),
+(2, 11, 12, 'Hola amiguis', '2020-03-12 10:40:26'),
+(3, 12, 11, 'hola man como vas', '2020-03-12 10:40:53'),
+(4, 12, 11, 'Hola', '2020-03-12 11:21:30'),
+(5, 11, 12, 'Bien man', '2020-03-12 11:22:58'),
+(6, 12, 11, 'MP', '2020-03-12 20:04:44'),
+(7, 13, 11, 'Hola amigo secreto', '2020-03-12 20:09:44');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `note`
+-- Estructura de tabla para la tabla `note`
 --
 
-CREATE TABLE IF NOT EXISTS `note` (
-`note_id` int(11) NOT NULL,
+CREATE TABLE `note` (
+  `note_id` int(11) NOT NULL,
   `date` varchar(100) NOT NULL,
   `message` varchar(200) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `note`
+-- Volcado de datos para la tabla `note`
 --
 
 INSERT INTO `note` (`note_id`, `date`, `message`) VALUES
@@ -119,61 +128,66 @@ INSERT INTO `note` (`note_id`, `date`, `message`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `photos`
+-- Estructura de tabla para la tabla `photos`
 --
 
-CREATE TABLE IF NOT EXISTS `photos` (
-`photos_id` int(11) NOT NULL,
+CREATE TABLE `photos` (
+  `photos_id` int(11) NOT NULL,
   `location` varchar(100) NOT NULL,
   `member_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `photos`
+-- Volcado de datos para la tabla `photos`
 --
 
 INSERT INTO `photos` (`photos_id`, `location`, `member_id`) VALUES
-(1, 'upload/7918240442_4471d5b11e_b.jpg', 1);
+(1, 'upload/7918240442_4471d5b11e_b.jpg', 1),
+(2, 'upload/Como dar Like Automatico por Palabra Clave en Twitter con Python.png', 11),
+(3, 'upload/Como Aumentar tus Seguidores en Instagram con Instabot Python.png', 11),
+(4, 'upload/como instalar wordpress en local con xampp.png', 11),
+(7, 'upload/como descargar video de Instagram Facebook Twitter Youtube Linkedin desde el Movil.jpg', 12);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post`
+-- Estructura de tabla para la tabla `post`
 --
 
-CREATE TABLE IF NOT EXISTS `post` (
-`post_id` int(11) NOT NULL,
+CREATE TABLE `post` (
+  `post_id` int(11) NOT NULL,
   `member_id` int(11) NOT NULL,
   `content` varchar(1000) NOT NULL,
   `date_posted` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `post`
+-- Volcado de datos para la tabla `post`
 --
 
 INSERT INTO `post` (`post_id`, `member_id`, `content`, `date_posted`) VALUES
-(2, 1, 'test', '2014-06-20 21:55:52'),
-(3, 1, 'demo', '2019-02-27 18:07:13'),
-(4, 10, 'hello world', '2019-03-16 22:26:11');
+(5, 11, 'Hola a todos esto es una prueba !!!', '2020-03-12 09:19:12'),
+(7, 12, 'Hola', '2020-03-12 10:31:09'),
+(9, 11, 'Hola a todos estoy feliz de poder interactuar en esta red social', '2020-03-12 20:02:27'),
+(10, 13, 'Me place mucho acceder a esta nueva gran red social', '2020-03-12 20:11:03');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `schedule`
+-- Estructura de tabla para la tabla `schedule`
 --
 
-CREATE TABLE IF NOT EXISTS `schedule` (
-`id` int(11) NOT NULL,
+CREATE TABLE `schedule` (
+  `id` int(11) NOT NULL,
   `member_id` int(11) NOT NULL,
   `date` varchar(100) NOT NULL,
   `service_id` int(11) NOT NULL,
   `Number` int(11) NOT NULL,
   `status` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `schedule`
+-- Volcado de datos para la tabla `schedule`
 --
 
 INSERT INTO `schedule` (`id`, `member_id`, `date`, `service_id`, `Number`, `status`) VALUES
@@ -184,17 +198,17 @@ INSERT INTO `schedule` (`id`, `member_id`, `date`, `service_id`, `Number`, `stat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `service`
+-- Estructura de tabla para la tabla `service`
 --
 
-CREATE TABLE IF NOT EXISTS `service` (
-`service_id` int(11) NOT NULL,
+CREATE TABLE `service` (
+  `service_id` int(11) NOT NULL,
   `service_offer` varchar(100) NOT NULL,
   `price` decimal(11,2) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `service`
+-- Volcado de datos para la tabla `service`
 --
 
 INSERT INTO `service` (`service_id`, `service_offer`, `price`) VALUES
@@ -204,131 +218,139 @@ INSERT INTO `service` (`service_id`, `service_offer`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Estructura de tabla para la tabla `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-`user_id` int(11) NOT NULL,
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`) VALUES
-(5, 'admin', 'admin'),
-(9, 'teph', 'teph'),
-(10, 'teph', 'teph');
+(5, 'configuroweb', '1234abcd..');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `friends`
+-- Indices de la tabla `friends`
 --
 ALTER TABLE `friends`
- ADD PRIMARY KEY (`my_friend_id`);
+  ADD PRIMARY KEY (`my_friend_id`);
 
 --
--- Indexes for table `members`
+-- Indices de la tabla `members`
 --
 ALTER TABLE `members`
- ADD PRIMARY KEY (`member_id`);
+  ADD PRIMARY KEY (`member_id`);
 
 --
--- Indexes for table `message`
+-- Indices de la tabla `message`
 --
 ALTER TABLE `message`
- ADD PRIMARY KEY (`message_id`);
+  ADD PRIMARY KEY (`message_id`);
 
 --
--- Indexes for table `note`
+-- Indices de la tabla `note`
 --
 ALTER TABLE `note`
- ADD PRIMARY KEY (`note_id`);
+  ADD PRIMARY KEY (`note_id`);
 
 --
--- Indexes for table `photos`
+-- Indices de la tabla `photos`
 --
 ALTER TABLE `photos`
- ADD PRIMARY KEY (`photos_id`);
+  ADD PRIMARY KEY (`photos_id`);
 
 --
--- Indexes for table `post`
+-- Indices de la tabla `post`
 --
 ALTER TABLE `post`
- ADD PRIMARY KEY (`post_id`);
+  ADD PRIMARY KEY (`post_id`);
 
 --
--- Indexes for table `schedule`
+-- Indices de la tabla `schedule`
 --
 ALTER TABLE `schedule`
- ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `service`
+-- Indices de la tabla `service`
 --
 ALTER TABLE `service`
- ADD PRIMARY KEY (`service_id`);
+  ADD PRIMARY KEY (`service_id`);
 
 --
--- Indexes for table `users`
+-- Indices de la tabla `users`
 --
 ALTER TABLE `users`
- ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `friends`
+-- AUTO_INCREMENT de la tabla `friends`
 --
 ALTER TABLE `friends`
-MODIFY `my_friend_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `my_friend_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
--- AUTO_INCREMENT for table `members`
+-- AUTO_INCREMENT de la tabla `members`
 --
 ALTER TABLE `members`
-MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `member_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
 --
--- AUTO_INCREMENT for table `message`
+-- AUTO_INCREMENT de la tabla `message`
 --
 ALTER TABLE `message`
-MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
--- AUTO_INCREMENT for table `note`
+-- AUTO_INCREMENT de la tabla `note`
 --
 ALTER TABLE `note`
-MODIFY `note_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `note_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
--- AUTO_INCREMENT for table `photos`
+-- AUTO_INCREMENT de la tabla `photos`
 --
 ALTER TABLE `photos`
-MODIFY `photos_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `photos_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
--- AUTO_INCREMENT for table `post`
+-- AUTO_INCREMENT de la tabla `post`
 --
 ALTER TABLE `post`
-MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
 --
--- AUTO_INCREMENT for table `schedule`
+-- AUTO_INCREMENT de la tabla `schedule`
 --
 ALTER TABLE `schedule`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=79;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+
 --
--- AUTO_INCREMENT for table `service`
+-- AUTO_INCREMENT de la tabla `service`
 --
 ALTER TABLE `service`
-MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
